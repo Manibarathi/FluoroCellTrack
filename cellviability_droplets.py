@@ -1,6 +1,7 @@
 import numpy as np
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
+##from skimage.transform import hough_ellipse
 import imutils
 import cv2
 from glob import glob
@@ -25,7 +26,7 @@ for fn in ind_img:
         for (x,y,r) in droplets:
             cv2.circle(output_img,(x,y),r,(0,255,0),2)
             cv2.rectangle(output_img, (x-5,y-5), (x+5,y+5), (0,125,255), -1)
-##    # specify parameters for non-circular droplets using FEHT (parameters can be changed depending on application)
+##    # specify parameters for non-circular droplets using FEHT (parameters can be changed depending on application)-make sure to import the package
 ##    cimg = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 ##    bimg = cv2.medianBlur(cimg, 5)
 ##    #dimg = cv2.Canny(cimg, 5, 10)
