@@ -15,7 +15,7 @@ for fn in ind_img:
     img=cv2.imread(fn)
     output_img = img.copy()
 
-    # specify parameters for droplets to be detected using CHT (parameters cn be changed depending on application)
+    # specify parameters for droplets to be detected using CHT (parameters can be changed depending on application)-replace this with FEHT for non-circular droplets 
     cimg = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     bimg = cv2.medianBlur(cimg, 5)
     #dimg = cv2.Canny(cimg, 5, 10)
@@ -25,7 +25,18 @@ for fn in ind_img:
         for (x,y,r) in droplets:
             cv2.circle(output_img,(x,y),r,(0,255,0),2)
             cv2.rectangle(output_img, (x-5,y-5), (x+5,y+5), (0,125,255), -1)
-            
+##    # specify parameters for non-circular droplets using FEHT (parameters can be changed depending on application)
+##    cimg = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+##    bimg = cv2.medianBlur(cimg, 5)
+##    #dimg = cv2.Canny(cimg, 5, 10)
+##    droplets = hough_ellipse(edges, accuracy=20, threshold=250,min_size=50, max_size=150)
+##    #parameterization
+##    yc, xc, a, b = [int(round(x)) 
+##    #Detect ellipse and draw outlines
+##    my, mx = ellipse_perimeter(ym, xm, a, b, orientation)
+##    output_img[cy, cx] = (0, 255, 255)
+##    edges = color.gray2rgb(output_img(edges))
+##    edges[cy, cx] = (255, 255, 255)       
     # print the number of detected droplets
         a=len(droplets)
         print (a)
